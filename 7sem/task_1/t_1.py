@@ -1,13 +1,16 @@
-lam = [2, 5, 5]
-c = [3, 2, 1]
-mu = 15
+n = 5
+lam = [1, 1.5, .7, 1.2, .5]
+v = [.18, .15, .25, .2, .3]
+c = [5, 4, 3, 2, 1]
+d = .01
 
-v = 1 / mu
-psy = [lam[i] / mu for i in range(len(lam))]
+mu = [1 / v[i] for i in range(n)]
+v_2 = [d + v[i] ** 2 for i in range(n)]
+psy = [lam[i] / mu[i] for i in range(n)]
 R_N = sum(psy)
 print("Коэффициент использования прибора любыми требованиями:", R_N)
 
-w = 0.5 * sum([2 * v ** 2 * lam[i] for i in range(len(lam))]) / (1 - R_N)
+w = 0.5 * sum([v_2[i] * lam[i] for i in range(n)]) / (1 - R_N)
 print("Средняя продолжительность ожидания в каждой очереди:", w)
 print("Среднее время ожидания произвольного заказа на обслуживание:", w)
 

@@ -1,11 +1,12 @@
-n = 3
-# начальные условия (оно является оптимальным)
-lam = [2, 5, 5]
-c = [3, 2, 1]
-mu = 15
+n = 5
+lam = [1, 1.5, .7, 1.2, .5]
+v = [.18, .15, .25, .2, .3]
+c = [5, 4, 3, 2, 1]
+d = .01
 
-v = 1 / mu
-psy = [lam[i] / mu for i in range(len(lam))]
+v_2 = [d + v[i] ** 2 for i in range(n)]
+mu = [1 / v[i] for i in range(n)]
+psy = [lam[i] / mu[i] for i in range(len(lam))]
 R_N = []
 s = 0
 for i in range(n):
@@ -16,10 +17,10 @@ print('R_N:', R_N)
 w = []
 for j in range(n):
     if j == 0:
-        w.append((0.5 * sum([lam[i] * 2 * v ** 2 for i in range(n)])) /
+        w.append((0.5 * sum([lam[i] * v_2[i] for i in range(n)])) /
                  (1 - R_N[j]))
     else:
-        w.append((0.5 * sum([lam[i] * 2 * v ** 2 for i in range(n)])) /
+        w.append((0.5 * sum([lam[i] * v_2[i] for i in range(n)])) /
                  ((1 - R_N[j - 1]) * (1 - R_N[j])))
 print('Среднее время ожидания в очередях:', w)
 
@@ -33,5 +34,5 @@ print('Средняя длина очереди:', sum(b))
 F = sum([lam[i] * w[i] * c[i] for i in range(n)]) + sum([c[i] * psy[i] for i in range(n)])
 print('F =', F)
 
-fines = [c[i] / v for i in range(n)]
+fines = [c[i] / v[i] for i in range(n)]
 print('Скорости извлечения прибором штрафов из СМО:', fines)
