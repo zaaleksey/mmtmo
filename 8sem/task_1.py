@@ -41,7 +41,7 @@ def get_p_ks(_k, _s, _alpha, _beta, _p_0):
 if __name__ == '__main__':
     lambda_ = 2
     mu = .5
-    v = 3
+    v = 1/3
 
     k = 3
 
