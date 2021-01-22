@@ -30,14 +30,13 @@ def get_p_n(_n, _alpha, _p_0):
 
 def get_p_ks(_k, _s, _alpha, _beta, _p_0):
     res = (_alpha ** (_k + _s)) / (factorial(_k) * product(_k, _s, _beta))
-
     return res * _p_0
 
 
 if __name__ == '__main__':
     lambda_ = 2
     mu = .5
-    v = 1/3
+    v = 1 / 3
 
     k = 3
 
@@ -84,7 +83,7 @@ if __name__ == '__main__':
         p_0 = get_p_0(k, alpha, beta, r)
         b = sum([s * get_p_ks(k, s, alpha, beta, p_0) for s in range(1, r + 1)])
         p_otk = b * (beta / alpha)
-        print(f"---вероятность отказа равна {p_otk}% при {k} ЭВМ")
+        print(f"---вероятность отказа равна {p_otk} при {k} ЭВМ")
 
     print("Чтобы вероятность отказа поступившим заказам на проведение метеорологических расчетов не превышала 0,1, "
           f"необходимо {k} ЭВМ.")
