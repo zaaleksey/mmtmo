@@ -1,4 +1,4 @@
-from math import factorial, exp
+from math import factorial
 
 
 def product(_k, _s, _beta):
@@ -78,4 +78,4 @@ if __name__ == '__main__':
         p_otk = (alpha - k + sum([(k - n) * get_p_n(n, alpha, p_0) for n in range(0, k + 1)])) / alpha
         print(f"---вероятность отказа равна {p_otk} при {k} бригадах")
 
-    print(f"Чтобы потери привезенных обощей составляли не более 10%, необходимо {k} бригад.")
+    print(f"Чтобы потери привезенных овощей составляли не более 10%, необходимо {k} бригады.")
